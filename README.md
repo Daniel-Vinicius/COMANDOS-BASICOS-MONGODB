@@ -1,6 +1,6 @@
 # Comandos-Basicos-Mongo-db
-##UM ARQUIVO TXT COM 793 LINHAS MOSTRANDO OS PRINCIPAIS COMANDOS EM Mongodb
-###Para realizar os comandos é nescessário ter o Mongodb instalado 
+UM ARQUIVO TXT COM 793 LINHAS MOSTRANDO OS PRINCIPAIS COMANDOS EM Mongodb
+Para realizar os comandos é nescessário ter o Mongodb instalado 
 
 Como instalar: https://youtu.be/skK5xj-CK-Q
 
