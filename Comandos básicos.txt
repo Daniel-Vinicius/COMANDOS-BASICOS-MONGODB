@@ -1,0 +1,793 @@
+Mongo BD
+O MONGO É UM BANCO DE DADOS NÃO RELACIONAL E SIM NOSQL
+AO INVÉS DE TABELAS TEMOS COLLECTIONS E AO INVÉS DE REGISTROS TEMOS DOCUMENTOS QUE SÃO INSERIDOS EM FORMA DE JSON
+------------------------------------------
+PARA USAR OS COMANDOS DO MONGO É NESCESSÁRIO O TER INSTALADO, ABRIR O TERMINAL E DIGITAR mongod e em outra aba digitar mongo
+------------------------------------------
+CRIAR BANCO
+use banco e depois db.createCollection('nomeDaColeção')
+------------------------------------------
+MOSTRAR OS BANCOS
+show dbs
+OBS: para um banco existir é nescessário no mínimo uma coleção
+------------------------------------------
+
+USAR TAL BANCO
+use nome_do_banco
+------------------------------------------
+MOSTRAR QUAL BANCO ESTÁ SENDO USADO NO MOMENTO
+db
+------------------------------------------
+CRIAR COLEÇÃO
+db.createCollection('nomeDaColeção')
+OBS: as coleções são case-sensitive logo A é diferente de a
+------------------------------------------
+EXCLUIR COLEÇÃO
+db.nomeDaColeção.drop()
+------------------------------------------
+INSERIR DADOS
+SINTAXE
+db.collection.insert({
+
+dado:"valor",
+dado: valor,
+dado: valor
+})
+
+OBS: para inserir um dado é nescessário uma coleção, os dados são parecidos com json
+OBS: se a collection não existir ele cria pra você
+------------------------------------------
+EXEMPLOS
+
+ 1) db.billingCycles.insert({
+    name: "Março/17",
+    month: 3,
+    year: 2017,
+    credits: [
+    { name: "Salário", value: 5000 }
+    ],
+    debts: [
+    { name: "Luz", value:100, status: "PAGO" },
+    { name: "Telefone", value:100, status: "PENDENTE" }
+    ]
+  })
+
+------------------------------------------
+
+2) db.billingCycles.insert({   
+   nome: "Dan",
+   Idade: 12,
+   Demaior: false
+   })
+
+------------------------------------------
+COMO INSERIR MAIS DE UM REGISTRO AO MESMO TEMPO
+SINTAXE
+db.collection.insert([
+  {dado: valor},
+  {dado: valor}
+]) 
+------------------------------------------
+EXEMPLO
+1) db.pessoas.insert([
+     {nome: 'Dan'},
+     {nome: 'Isa'}
+   ]) 
+------------------------------------------
+EXEMPLO
+2) db.produtos.insertMany([ 
+    {cdProduto: 1, nmProduto: "Feijão", dtValidade: ISODate(), tags: [ "carioca" ], qualidade: "Alta"},
+    {cdProduto: 2, nmProduto: "Arroz  ", dtValidade: ISODate(), tags: [ "branco" ], qualidade: "Baixa"},
+    {cdProduto: 3, nmProduto: "Cachaça", dtValidade: ISODate(), tags: [ "Alcoólico" ], qualidade: "Média"},
+    {cdProduto: 4, nmProduto: "Doce de leite", dtValidade: ISODate(), tags: [ "doce", "Açúcar" ], qualidade: "Alta"},
+    {cdProduto: 5, nmProduto: "Óleo", dtValidade: ISODate(), tags: [ "Vegetal" ], qualidade: "Baixa"}
+])
+------------------------------------------
+VOCÊ TAMBÉM PODE USAR O MÉTODO SAVE PARA INSERIR DESSA FORMA
+SINTAXE
+db.collection.save({dado: 'valor', dado: valor, dado: valor})
+------------------------------------------
+EXEMPLO
+1)  db.billingCycles.save({name: 'Fevereiro/17', month: 2, year: 2017})
+------------------------------------------
+BUSCAS
+------------------------------------------
+BUSCAR TUDO
+SINTAXE
+db.collection.find()
+RETORNA TODOS OS DADOS DA COLEÇÃO
+------------------------------------------
+EXEMPLO
+------------------------------------------
+db.billingCycles.find()
+1)  { "_id" : ObjectId("5f501f1017e8f0d3c968822d"), "nome" : "Dan", "Idade" : 12, "Demaior" : false }
+    { "_id" : ObjectId("5f501fc517e8f0d3c968822e"), "name" : "Fevereiro/17", "month" : 2, "year" : 2017 }
+------------------------------------------
+COMO TRAZER APENAS UM DADO NA CONSULTA
+SINTAXE
+db.collection.find({filtroOpcional}, {dado:0, dado:1}) // 0 = false, 1 = true
+------------------------------------------
+EXEMPLO
+1)  db.produtos.find({}, {_id:0, nmProduto:1, preco:1})
+{
+    "nmProduto" : "Feijão",
+    "preco" : 11.9
+}
+{
+    "nmProduto" : "Arroz  ",
+    "preco" : 9.55
+}
+
+{
+    "nmProduto" : "Cachaça",
+    "preco" : 4.35
+}
+
+{
+    "nmProduto" : "Doce de leite",
+    "preco" : 15.99
+}
+{
+    "nmProduto" : "Óleo",
+    "preco" : 7.45
+}
+
+{
+    "nmProduto" : "Salgadinho",
+    "preco" : 1.45
+}
+------------------------------------------
+BUSCAR TUDO DE UM JEITO BONITO
+SINTAXE
+db.collection.find().pretty()
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)  db.billingCycles.find().pretty()
+    {
+            "_id" : ObjectId("5f501f1017e8f0d3c968822d"),
+            "nome" : "Dan",
+            "Idade" : 12,
+            "Demaior" : false
+    }
+    {
+            "_id" : ObjectId("5f501fc517e8f0d3c968822e"),
+            "name" : "Fevereiro/17",
+            "month" : 2,
+            "year" : 2017
+    }
+------------------------------------------
+BUSCAR APENAS O PRIMEIRO DADO INSERIDO
+SINTAXE
+db.collection.findOne()
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)  db.billingCycles.findOne()
+    {
+            "_id" : ObjectId("5f501f1017e8f0d3c968822d"),
+            "nome" : "Dan",
+            "Idade" : 12,
+            "Demaior" : false
+    }
+------------------------------------------
+FILTRAR 
+SINTAXE
+db.collection.find({FILTRO})
+------------------------------------------
+EXEMPLOS
+------------------------------------------
+1)    db.billingCycles.findOne({Idade: 12})
+    {
+            "_id" : ObjectId("5f501f1017e8f0d3c968822d"),
+            "nome" : "Dan",
+            "Idade" : 12,
+            "Demaior" : false
+    }
+------------------------------------------
+ 2)   db.billingCycles.find({ year:2017 }).pretty()
+    {
+            "_id" : ObjectId("5f501fc517e8f0d3c968822e"),
+            "name" : "Fevereiro/17",
+            "month" : 2,
+            "year" : 2017
+    }
+------------------------------------------
+USANDO O DISTINCT
+SINTAXE
+    db.getCollection('collection').distinct("dado")
+------------------------------------------
+    EXEMPLO
+------------------------------------------
+ 1)   db.getCollection('teste').distinct("nome")
+     [
+    "Dan",
+    "Isa"
+     ]
+------------------------------------------
+    EXEMPLO
+------------------------------------------
+ 2)   db.getCollection('faculdades').distinct("cidade")
+     [
+    "0" : "Bauru",
+    "1" : "Garça",
+    "2" : "Ribeirão Preto",
+    "3" : "São Carlos"
+     ]
+------------------------------------------
+USANDO O OPERADOR OU
+SINTAXE
+db.collection.find({$or: [ { dado: valor}, {dado: valor} ] })
+------------------------------------------
+EXEMPLO
+------------------------------------------
+ 1)  db.billingCycles.find({$or: [ { Idade: 12}, {Idade: 3} ] }).pretty()
+   {
+           "_id" : ObjectId("5f501f1017e8f0d3c968822d"),
+           "nome" : "Dan",
+           "Idade" : 12,
+           "Demaior" : false
+   }
+------------------------------------------
+USANDO O OPERADOR E
+SINTAXE
+db.collection.find({$and: [ { dado: valor}, {dado: valor} ] })
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)   db.billingCycles.find({$and: [ { Idade: 12}, {nome: "Dan"} ] }).pretty()
+   {
+           "_id" : ObjectId("5f501f1017e8f0d3c968822d"),
+           "nome" : "Dan",
+           "Idade" : 12,
+           "Demaior" : false
+   }
+------------------------------------------
+USANDO O OPERADOR NOT // o operador nega o valor passado
+SINTAXE
+db.collection.find( { dado: { $not: { $eq: valor } } } )
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)   db.produtos.find( { qualidade: { $not: { $eq: 'Alta' } } } ).pretty() 
+
+/* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364e"),
+    "cdProduto" : 5.0,
+    "nmProduto" : "Óleo",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Vegetal"
+    ],
+    "qualidade" : "Baixa"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5f5154c696a7d3cc95b7364f"),
+    "cdProduto" : 1.0,
+    "nmProduto" : "Salgadinho",
+    "dtValidade" : ISODate("2020-09-03T20:40:38.584Z"),
+    "tags" : [ 
+        "Doritos"
+    ]
+}
+------------------------------------------
+USANDO O OPERADOR NOR // o operador nor nega tudo o que está dentro do array
+SINTAXE
+db.collection.find({$nor: [ { dado: valor}, {dado: valor} ] })
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)   db.produtos.find( {$nor: [ 
+     {qualidade: "Alta"},
+     {qualidade: {$exists:false}}
+    ]})
+
+   /* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364e"),
+    "cdProduto" : 5.0,
+    "nmProduto" : "Óleo",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Vegetal"
+    ],
+    "qualidade" : "Baixa"
+}
+------------------------------------------
+USANDO O EQUAL OU $EQ // usado junto com o not // pode ser substituido pelo $ne
+SINTAXE
+db.collection.find( { dado: { $not: { $eq: 'Valor' } } } ).pretty() 
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1) db.produtos.find( { cdProduto: { $not: { $eq: 5 } } } ).pretty() 
+------------------------------------------
+   /* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364a"),
+    "cdProduto" : 0.0,
+    "nmProduto" : "Feijão",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "carioca"
+    ],
+    "qualidade" : "Alta"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364d"),
+    "cdProduto" : 4.0,
+    "nmProduto" : "Doce de leite",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "doce", 
+        "Açúcar"
+    ],
+    "qualidade" : "Alta"
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5f5154c696a7d3cc95b7364f"),
+    "cdProduto" : 6.0,
+    "nmProduto" : "Salgadinho",
+    "dtValidade" : ISODate("2020-09-03T20:40:38.584Z"),
+    "tags" : [ 
+        "Doritos"
+    ]
+}
+
+------------------------------------------
+USANDO O EXISTS
+SINTAXE
+db.collection.find({ dado:{$exists:true ou false}})
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1) db.billingCycles.find({ year:{$exists:true}}).pretty()
+   {
+           "_id" : ObjectId("5f501fc517e8f0d3c968822e"),
+           "name" : "Fevereiro/17",
+           "month" : 2,
+           "year" : 2017
+   }
+------------------------------------------
+EXEMPLO
+------------------------------------------
+2) db.produtos.updateMany(
+      {  preco:{$exists: false} },          
+  {  $set:{ preco:[ {preco:10} ] } }   
+)
+------------------------------------------
+SKIP PULA UM NÚMERO DE INSERÇÕES
+db.collection.find().skip(1)
+------------------------------------------
+LIMIT LIMITA O NÚMERO DE DADOS RETORNADOS, SEMELHANTE AO TOP, O LIMIT É ÚTIL PARA PAGINAÇÃO
+db.collection.find({ year:2017 }).skip(1).limit(1).pretty()
+------------------------------------------
+CONSULTAS DE AGREGAÇÃO
+CASO NÃO SE LEMBRE MUITO BEM ACESSE: https://pt.stackoverflow.com/questions/51258/d%C3%BAvida-o-group-mongodb
+------------------------------------------
+SINTAXE
+------------------------------------------
+   db.collection.aggregate({
+   {
+   $group: {
+           _id:peloQueVocêQuerAgrupar,  variável:{$valor dela:"$dado"},
+                                        variável:{$valor dela:"$dado"}
+   }
+   })  
+------------------------------------------
+EXEMPLO
+------------------------------------------
+2)  db.pokemons.aggregate({
+  $group:{
+      _id:{},
+      media_defense:{ $avg: '$defense'},
+      media_atack: {$avg: '$attack'},
+      defense: {$sum: '$defense'},
+      attack: {$sum: '$attack'},
+      total: {$sum: 1}
+  }
+})
+
+{
+  "result": [
+    {
+      "_id": {
+
+      },
+      "media_defense": 71.55322580645161,
+      "media_atack": 75.84193548387097,
+      "defense": 44363,
+      "attack": 47022,
+      "total": 620
+    }
+  ],
+  "ok": 1
+}
+------------------------------------------
+UPDATE
+SINTAXE
+db.collection.update( 
+  {  $and:[ {dado: valor}, {dado: valor} ] },            // filtro
+  {  $set:{ array:[ {dado:valor,dado:valor } ] } }    // adicionar, ou atualizar                                  
+  )
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)  db.billingCycles.update( 
+  {  $and:[{month: 2}, {year: 2017}]},
+  {  $set:{credits:[{name:"Salário",value:5000 }]}}    // adicionando o array credits que não existia                                  
+  )
+------------------------------------------
+EXEMPLO
+------------------------------------------
+2)  db.produtos.update(
+   { $or: [ {preco: 10}, { cdProduto: 6 } ]},
+    {$set: { preco: 1.45 } }
+    )
+------------------------------------------
+COMO ATUALIZAR MAIS DE UM REGISTRO AO MESMO TEMPO
+SINTAXE
+db.collection.updateMany( 
+  {dado: "valor"}, // como estou usando updateMany todos os registros onde dado = valor serão alterados
+  {$set: { dado:"valor"} 
+  }
+  )
+------------------------------------------
+EXEMPLO
+1)  db.teste.updateMany( {nome: "Dan"}, {$set: { nome:"Viana"} } )
+// como estou usando updateMany todos os registros onde nome = Dan serão alterados
+------------------------------------------
+COMO REMOVER UM DADO 
+SINTAXE
+db.collection.remove({filtro que só o que você quer excluir atende})
+------------------------------------------
+1)  EXEMPLO
+    db.billingCycles.remove({month:2})
+------------------------------------------
+COMO LIMITAR QUANTOS ITENS SERÃO EXCLUIDOS
+SINTAXE
+db.collection.remove({filtro que só o que você quer excluir atende} NumeroDeVezesQueVcQLimitar )
+------------------------------------------
+EXEMPLO
+1)  db.billingCycles.remove({month:2}, 2 )
+    mesmo que aqui tenham 100 registros com o mes 2 ele só excluirá os 2 primeiros cadastrados que atendem a esse requisito.
+------------------------------------------
+COMO REMOVER VÁRIOS DADOS 
+SINTAXE
+db.collection.deleteMany({FILTRO})
+------------------------------------------
+EXEMPLO
+1) db.teste.deleteMany({nome: "Vinícius"})
+------------------------------------------
+COUNT CONTA O NÚMERO DE VEZES EM QUE TAL COISA APARECE
+db.collection.count()
+------------------------------------------
+COMO SABER DETALHES DO BANCO EM QUE VOCÊ ESTÁ 
+db.stats()
+------------------------------------------
+COMO COMENTAR EM mongodb
+//
+------------------------------------------
+OPERADORES DE COMPARAÇÃO DE VALORES
+SINTAXE
+db.collection.find({DadoNumérico: {$gt: valorNumérico}}) // maior 
+db.collection.find({DadoNumérico: {$gte: valorNumérico}}) // maior ou igual
+db.collection.find({DadoNumérico: {$lt: valorNumérico}}) // menor
+db.collection.find({DadoNumérico: {$lte: valorNumérico}}) // menor ou igual
+------------------------------------------
+EXEMPLO 
+------------------------------------------
+db.produtos.find({preco: {$gt: 7.45}}) // maior 
+db.produtos.find({preco: {$gte: 7.45}}) // maior ou igual
+db.produtos.find({preco: {$lt: 7.45}}) // menor
+db.produtos.find({preco: {$lte: 7.45}}) // menor ou igual
+------------------------------------------
+COMO FAZER FAIXA DE VALOR NUMÉRICO
+SINTAXE
+db.collection.find({$and:[ {DadoNumérico:{$gte:valorNumérico}}, {DadoNumérico: { $lte: valorNumérico }} ]})
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)  db.produtos.find( {$and: [ {preco:{$gte:4.35}}, {preco: { $lte: 9.55 }} ] })
+
+/* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 9.55
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média",
+    "preco" : 4.35
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364e"),
+    "cdProduto" : 5.0,
+    "nmProduto" : "Óleo",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Vegetal"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 7.45
+}
+
+2)  db.pessoas.find( {$and: [ {Idade:{$gte:18}}, {Idade: { $lte: 25 }} ] })
+
+/* 1 */
+{
+    "_id" : ObjectId("5f5176e6f7e7b11be27d5b76"),
+    "nome" : "Rodrigo",
+    "Idade" : 22.0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5176e6f7e7b11be27d5b79"),
+    "nome" : "Francisco",
+    "Idade" : 25.0
+}
+------------------------------------------
+SORT COMO ORDENAR 
+SINTAXE
+db.collection.find({filtroOpcional}, {}).sort({dadoAserOrdenado: -1 ou 1}) 
+// -1 = decrescente, 1 = crescente
+------------------------------------------
+EXEMPLO
+------------------------------------------
+1)  db.produtos.find({}, {}).sort({cdProduto: 1})
+
+/* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364a"),
+    "cdProduto" : 1.0,
+    "nmProduto" : "Feijão",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "carioca"
+    ],
+    "qualidade" : "Alta",
+    "preco" : 11.9
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 9.55
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média",
+    "preco" : 4.35
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364d"),
+    "cdProduto" : 4.0,
+    "nmProduto" : "Doce de leite",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "doce", 
+        "Açúcar"
+    ],
+    "qualidade" : "Alta",
+    "preco" : 15.99
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364e"),
+    "cdProduto" : 5.0,
+    "nmProduto" : "Óleo",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Vegetal"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 7.45
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("5f5154c696a7d3cc95b7364f"),
+    "cdProduto" : 6.0,
+    "nmProduto" : "Salgadinho",
+    "dtValidade" : ISODate("2020-09-03T20:40:38.584Z"),
+    "tags" : [ 
+        "Doritos"
+    ],
+    "preco" : 1.45
+}
+
+2) db.produtos.find({}, {}).sort({nmProduto: -1})
+
+/* 1 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364e"),
+    "cdProduto" : 5.0,
+    "nmProduto" : "Óleo",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Vegetal"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 7.45
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f5154c696a7d3cc95b7364f"),
+    "cdProduto" : 6.0,
+    "nmProduto" : "Salgadinho",
+    "dtValidade" : ISODate("2020-09-03T20:40:38.584Z"),
+    "tags" : [ 
+        "Doritos"
+    ],
+    "preco" : 1.45
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364a"),
+    "cdProduto" : 1.0,
+    "nmProduto" : "Feijão",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "carioca"
+    ],
+    "qualidade" : "Alta",
+    "preco" : 11.9
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364d"),
+    "cdProduto" : 4.0,
+    "nmProduto" : "Doce de leite",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "doce", 
+        "Açúcar"
+    ],
+    "qualidade" : "Alta",
+    "preco" : 15.99
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364c"),
+    "cdProduto" : 3.0,
+    "nmProduto" : "Cachaça",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "Alcoólico"
+    ],
+    "qualidade" : "Média",
+    "preco" : 4.35
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("5f5151db96a7d3cc95b7364b"),
+    "cdProduto" : 2.0,
+    "nmProduto" : "Arroz  ",
+    "dtValidade" : ISODate("2020-09-03T20:28:11.481Z"),
+    "tags" : [ 
+        "branco"
+    ],
+    "qualidade" : "Baixa",
+    "preco" : 9.55
+}
+------------------------------------------
