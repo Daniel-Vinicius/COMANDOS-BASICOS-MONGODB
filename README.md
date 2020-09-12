@@ -24,8 +24,8 @@ Tabela de conteúdos
 =================
 <!--ts-->
    * [Sobre o projeto](#sobre)
-    * [Pré-requisitos](#pré-requisitos)
-    * [Contribuidores](#contribuidores)
+   * [Pré-requisitos](#pré-requisitos)
+   * [Contribuidores](#contribuidores)
    * [Autor](#autor)
    * [Licença](#licença)
 <!--te-->
