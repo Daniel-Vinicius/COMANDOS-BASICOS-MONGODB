@@ -2,8 +2,8 @@
 
 <h1  align="center">
 <a  href="#"  alt="Repositório dos comandos Mongodb">
-<img  alt="Logo MongoDb"  src="./assets/mongodb.svg">
-Comandos-Basicos-Mongodb</a>
+
+Comandos Básicos Mongodb</a>
 </h1>
 
 <h2 align="center">
@@ -33,7 +33,7 @@ Tabela de conteúdos
 
 ### 💻 Sobre o projeto<a id="sobre"></a>
 
-<img  alt="Logo MongoDb "  src="./assets/mongodb.svg"> Esse repositório- é uma forma de ajudar pessoas que precisam ou querem usar Mongodb em seus projetos, mas não querem fazer um curso muito grande. Aqui você encontra os comandos mais usados: consultas, remoções, inserções e atualizações de dados em mongodb, ótimo para você consultar quando esquecer algum comando.
+Esse repositório- é uma forma de ajudar pessoas que precisam ou querem usar Mongodb em seus projetos, mas não querem fazer um curso muito grande. Aqui você encontra os comandos mais usados: consultas, remoções, inserções e atualizações de dados em mongodb, ótimo para você consultar quando esquecer algum comando.
 
 
 Projeto desenvolvido baseado no curso: **Curso de MongoDB do Zurubabel.**
@@ -85,193 +85,114 @@ Pronto agora com os vídeos da série e com o repositório você não vai mais s
 
 <table>
 
-<tr>
-
-  
+<tr>  
 
 <td  align="center">
-
 <a  href="https://github.com/Daniel-Vinicius">
-
 <img  style="border-radius: 50%;"  src="https://avatars3.githubusercontent.com/u/66279500?s=460&u=2978b74f2bfcfec553cdd62c2cf15a0eca6652a3&v=4"
-
 width="100px;"  alt="Daniel Vinícius"/>
-
 <br />
-
 <sub><b>Daniel Vinícius</b></sub>
-
 </a> <br />
-
 </td>
 
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
   
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
-  
+</tr>  
 
-</tr>
-
-  
-
-<tr>
-
-  
-  
+<tr>  
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
   
   
 
 <td  align="center">
-
 <a  href="https://github.com">
-
 <img  style="border-radius: 50%;"  src="https://avatars1.githubusercontent.com/u/71185268?s=460&v=4"
-
 width="100px;"  alt="Nome do contribuidor"/>
-
 <br />
-
 <sub><b>Nome do contribuidor</b></sub>
-
 </a> <br />
-
 </td>
 
 </tr>
