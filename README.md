@@ -50,8 +50,8 @@ Como instalar:  https://youtu.be/skK5xj-CK-Q
 
 Recomendo que você quando for realizar os comandos, faça em uma interface gráfica, eu recomendo o <a href="https://robomongo.org/download"> Robo3T </a>.
 
-Quando você clicar no link acima será redirecionado a página abaixo, nela selecione a opção grifada em amarelo e quando baixado, vá até a pasta downloads, e execute o arquivo.
-<img  alt="página de download"  src="./assets/imagem-dowload.jpg"> 
+Quando você clicar no link acima será redirecionado a página abaixo, nela selecione a opção grifada em amarelo e quando baixado, vá até a pasta downloads, e execute o arquivo. 
+<img  alt="página de download"  src="assets/imagem-dowload.JPG"> 
 
 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
@@ -63,16 +63,16 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 Depois de instalado o Mongo e o Robo 3T, com o Mongo inicializado, abrindo o Robo 3T você verá a imagem abaixo, clique em create.
 
-<img  src="./assets/robo1.jpg">
+<img  src="./assets/robo1.JPG">
 
 Após o clique você cai aqui, digite o nome que você quer dar a sua conexão, e certifique-se que os outros dois campos estejam iguais aos da foto, aí clique em save.
 
-<img  src="./assets/robo2.jpg">
+<img  src="./assets/robo2.JPG">
 
 Quase acabando, selecione a sua conexão e COM O MONGO INICIALIZADO clique em Connect.
 OBS: no txt eu ensino a inicializar o Mongo
 
-<img  src="./assets/robo3.jpg">
+<img  src="./assets/robo3.JPG">
 
 Pronto agora com os vídeos da série e com o repositório você não vai mais se preocupar tanto com Mongodb 😉.
 
