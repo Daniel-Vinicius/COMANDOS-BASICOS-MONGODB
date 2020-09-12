@@ -1,8 +1,8 @@
-Mongo BD
+Mongo DB
 O MONGO É UM BANCO DE DADOS NÃO RELACIONAL E SIM NOSQL
 AO INVÉS DE TABELAS TEMOS COLLECTIONS E AO INVÉS DE REGISTROS TEMOS DOCUMENTOS QUE SÃO INSERIDOS EM FORMA DE JSON
 ------------------------------------------
-PARA USAR OS COMANDOS DO MONGO É NESCESSÁRIO O TER INSTALADO, ABRIR O TERMINAL E DIGITAR mongod e em outra aba digitar mongo
+PARA INICIALIZAR O MONGO É NESCESSÁRIO O TER INSTALADO, ABRIR O TERMINAL E DIGITAR mongod e em outra aba digitar mongo
 ------------------------------------------
 CRIAR BANCO
 use banco e depois db.createCollection('nomeDaColeção')
