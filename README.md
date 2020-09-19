@@ -4,9 +4,9 @@
 Comandos Básicos Mongodb
 </h1>
 
-<h2 align="center">
+<p align="center">
     Um arquivo texto com 793 linhas mostrando os principais comandos em Mongodb.
-</h2>
+</p>
 
 <p align="center"> 
 
