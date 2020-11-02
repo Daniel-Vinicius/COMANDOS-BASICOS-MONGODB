@@ -199,12 +199,6 @@ width="100px;"  alt="Nome do contribuidor"/>
 
 </table>
 
-### 💪 Como contribuir no projeto
-
-1.Você pode entrar em contato no <a href="https://t.me/DanielVini"> meu Telegram </a> ou contribuir normalmente
-
-> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
-
 ---
 
 ### 🦸 Autor <a id="autor"> </a>
